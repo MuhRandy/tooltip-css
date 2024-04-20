@@ -1,0 +1,126 @@
+:root {
+  --tooltip-background-color: rgba(0, 0, 0, 0.8);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100dvh;
+  text-align: center;
+}
+
+article {
+  display: flex;
+  gap: 10px;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::before {
+  content: attr(data-tooltip);
+
+  color: white;
+  background-color: var(--tooltip-background-color);
+  min-width: 120px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.tooltip::after {
+  content: "";
+}
+
+.tooltip::after,
+.tooltip::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+
+  position: absolute;
+}
+
+.tooltip:hover::after,
+.tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip--top::after,
+.tooltip--top::before {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--top::before {
+  margin-bottom: 7px;
+}
+
+.tooltip--top::after {
+  border-left: solid 5px transparent;
+  border-right: solid 5px transparent;
+  border-top: solid 7px var(--tooltip-background-color);
+}
+
+.tooltip--bottom::after,
+.tooltip--bottom::before {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip--bottom::before {
+  margin-top: 7px;
+}
+
+.tooltip--bottom::after {
+  border-left: solid 5px transparent;
+  border-right: solid 5px transparent;
+  border-bottom: solid 7px var(--tooltip-background-color);
+}
+
+.tooltip--right::after,
+.tooltip--right::before {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip--right::before {
+  margin-left: 7px;
+}
+
+.tooltip--right::after {
+  border-top: solid 5px transparent;
+  border-bottom: solid 5px transparent;
+  border-right: solid 7px var(--tooltip-background-color);
+}
+
+.tooltip--left::after,
+.tooltip--left::before {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip--left::before {
+  margin-right: 7px;
+}
+
+.tooltip--left::after {
+  border-top: solid 5px transparent;
+  border-bottom: solid 5px transparent;
+  border-left: solid 7px var(--tooltip-background-color);
+
+  /* margin-right: 10px; */
+}
